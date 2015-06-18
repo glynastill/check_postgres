@@ -5439,6 +5439,7 @@ sub check_locks {
 
             ## If we hit the right join, simply make an empty total entry
             if (! length $granted) {
+                $gotone = 1;
                 $dblock{$dbname}{total} ||= 0;
             }
             else {
