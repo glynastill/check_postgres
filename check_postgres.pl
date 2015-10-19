@@ -5196,7 +5196,7 @@ WHERE spclocation <> ''
 
         ## Check log_directory: relative or absolute
         if (length $logdir) {
-            if ($logdir =~ /^\w/) { ## relative, check only if symlinked
+            if ($logdir =~ /^\w/ || $logdir =~ /^\.\//) { ## relative, check only if symlinked
                 $logdir = "$datadir/$logdir";
                 if (-l $logdir) {
                     my $linkdir = readlink($logdir);
