@@ -8098,7 +8098,7 @@ sub check_txn_idle {
         my $st = $r->{state} || '';
 
         ## Return unknown if we cannot see because we are a non-superuser
-        if ($cq =~ /^insufficient/o) {
+        if ($cq =~ /^insufficient/o or $cq =~ /^<insufficient privilege>/) {
             add_unknown msg('psa-nosuper');
             return;
         }
